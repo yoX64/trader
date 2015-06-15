@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 09, 2015 at 08:44 PM
+-- Generation Time: Jun 15, 2015 at 08:27 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -64,6 +64,33 @@ INSERT INTO `categories` (`category_id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `products` text NOT NULL,
+  `quantity` text NOT NULL,
+  `address` text NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL DEFAULT '1' COMMENT '1 - order is not resolved, 0 - order is resolved',
+  `canceled` int(11) NOT NULL DEFAULT '0' COMMENT '1 - order is canceled, 0 - order is not canceled',
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `fname`, `lname`, `email`, `products`, `quantity`, `address`, `order_date`, `status`, `canceled`) VALUES
+(2, 'John ', 'Doe', 'john.doe@gmail.com', 'a:1:{i:0;s:1:"1";}', 'a:1:{i:0;s:1:"2";}', 'Timisoara', '2015-06-15 17:15:02', 1, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -76,7 +103,14 @@ CREATE TABLE IF NOT EXISTS `products` (
   `stock` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `category_id`, `name`, `description`, `price`, `stock`, `image`) VALUES
+(1, 1, 'test product', 'test test test', 10, 3, 'code-wallpaper.jpg');
 
 -- --------------------------------------------------------
 

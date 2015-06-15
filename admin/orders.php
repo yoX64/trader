@@ -35,7 +35,7 @@ include('config.php');
 			</thead>
 			<tbody>
 				<?php
-				$orders = $db->query("SELECT * FROM orders WHERE status='1' ORDER BY order_date DESC");
+				$orders = $db->query("SELECT * FROM orders WHERE status='1' AND canceled='0' ORDER BY order_date DESC");
 				while($row = $orders->fetch_assoc()) {
 				?>
 				<tr>
