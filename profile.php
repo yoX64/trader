@@ -5,7 +5,7 @@ include('config.php');
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Forum - Profile</title>
+	<title>Trader - Profile</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -45,11 +45,13 @@ include('config.php');
 
 				if(!$row = $user_data->fetch_assoc()) {
 					$row = array(
-						'user_id'  		=> '',
-						'fname'  			=> '',
-						'lname'  			=> '',
-						'email'  			=> '',
-						'avatar' 			=> ''
+						'user_id'	=> '',
+						'fname'		=> '',
+						'lname'		=> '',
+						'email'		=> '',
+						'address'	=> '',
+						'phone'		=> '',
+						'orders'	=> array(),
 					);
 				}
 
@@ -60,7 +62,7 @@ include('config.php');
 				}
 				?>
 
-				<form method="post" action="profile_process.php" enctype="multipart/form-data">
+				<form method="post" action="profile_process.php">
 					<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
 				  <div class="form-group">
@@ -76,15 +78,12 @@ include('config.php');
 				    <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email" value="<?php echo $row['email'];?>">
 				  </div>
 				  <div class="form-group">
-				    <label for="avatar">Avatar</label>
-				    <?php
-				    if(file_exists('uploads/' . $row['avatar']) && $row['avatar'] != '') {
-				    ?>
-				    <img src="uploads/<?php echo $row['avatar']; ?>" alt="Avatar" class="img-responsive">
-				    <?php
-				    }
-				    ?>
-				    <input type="file" name="avatar" id="avatar">
+				    <label for="phone">Phone</label>
+				    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your phone" value="<?php echo $row['phone'];?>">
+				  </div>
+				  <div class="form-group">
+				    <label for="address">Address</label>
+				    <input type="text" class="form-control" name="address" id="address" placeholder="Enter your address" value="<?php echo $row['address'];?>">
 				  </div>
 				  <button type="submit" class="btn btn-default">Submit!</button>
 				</form>

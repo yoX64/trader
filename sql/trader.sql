@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2015 at 08:27 PM
+-- Generation Time: Jun 16, 2015 at 08:15 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -123,7 +123,38 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
+(1, 'user_1', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_data`
+--
+
+CREATE TABLE IF NOT EXISTS `user_data` (
+  `data_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `orders` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_data`
+--
+
+INSERT INTO `user_data` (`data_id`, `user_id`, `fname`, `lname`, `address`, `email`, `phone`, `orders`) VALUES
+(0, 1, 'John', 'Doe', 'Timisoara', 'john@gmail.com', '0723 456 345', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
