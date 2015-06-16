@@ -58,6 +58,7 @@ if(!isset($username)) {
             } else {
             ?>
             <li><a href="<?php echo $base_path; ?>/profile.php">Profile</a></li>
+            <li><a href="<?php echo $base_path; ?>/my_orders.php">My orders</a></li>
             <li><a href="<?php echo $base_path; ?>/change_password.php">Change password</a></li>
             <li><a href="<?php echo $base_path; ?>/logout.php">Log out</a></li>
             <?php

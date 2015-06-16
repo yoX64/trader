@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2015 at 08:15 PM
+-- Generation Time: Jun 16, 2015 at 08:41 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -69,6 +69,7 @@ INSERT INTO `categories` (`category_id`, `name`, `description`) VALUES
 
 CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -85,8 +86,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `fname`, `lname`, `email`, `products`, `quantity`, `address`, `order_date`, `status`, `canceled`) VALUES
-(2, 'John ', 'Doe', 'john.doe@gmail.com', 'a:1:{i:0;s:1:"1";}', 'a:1:{i:0;s:1:"2";}', 'Timisoara', '2015-06-15 17:15:02', 1, 0);
+INSERT INTO `orders` (`order_id`, `user_id`, `fname`, `lname`, `email`, `products`, `quantity`, `address`, `order_date`, `status`, `canceled`) VALUES
+(2, 1, 'John ', 'Doe', 'john.doe@gmail.com', 'a:1:{i:0;s:1:"1";}', 'a:1:{i:0;s:1:"2";}', 'Timisoara', '2015-06-16 17:23:27', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
-(1, 'user_1', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+(1, 'user_1', 'dd5fef9c1c1da1394d6d34b248c51be2ad740840');
 
 -- --------------------------------------------------------
 
@@ -139,22 +140,22 @@ INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user_data` (
-  `data_id` int(11) NOT NULL,
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `address` text NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `orders` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`data_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `user_data`
 --
 
-INSERT INTO `user_data` (`data_id`, `user_id`, `fname`, `lname`, `address`, `email`, `phone`, `orders`) VALUES
-(0, 1, 'John', 'Doe', 'Timisoara', 'john@gmail.com', '0723 456 345', '');
+INSERT INTO `user_data` (`data_id`, `user_id`, `fname`, `lname`, `address`, `email`, `phone`) VALUES
+(1, 1, 'John', 'Doe', 'Timisoara', 'doe@gmail.com', '0723 345 283');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
