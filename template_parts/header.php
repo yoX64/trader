@@ -37,13 +37,7 @@ if(!isset($username)) {
           ?>
           </ul>
         </li>
-        <?php
-        if(isset($_SESSION['user_id'])) {
-        ?>
         <li><a href="<?php echo $base_path; ?>/cart.php">Cart</a></li>
-        <?php
-        }
-        ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
