@@ -24,6 +24,31 @@ include('config.php');
 
 	<div class="container">
 		<h1>Latest products</h1>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th width="90%">Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$latest_products = $db->query("SELECT * FROM products ORDER BY product_id DESC LIMIT 0,5");
+
+				while($row = $latest_products->fetch_assoc()) {
+				?>
+				<tr>
+					<td><?php echo $row['name'] ?></td>
+					<td>
+						<a href="<?php echo $base_path; ?>/view_product.php?product_id=<?php echo $row['product_id']; ?>" class="btn btn-primary">View</a>
+					</td>
+				</tr>
+				<?php
+				}
+				?>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
