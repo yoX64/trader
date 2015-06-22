@@ -5,7 +5,7 @@ include('config.php');
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Forum - Register</title>
+	<title>Trader - Register</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">

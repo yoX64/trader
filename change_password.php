@@ -1,11 +1,19 @@
 <?php
 include('config.php');
+
+if(!isset($_SESSION['user_id'])) {
+	$_SESSION['login_errors'] = array(
+		'Please log in first'
+	);
+	header("Location: login.php");
+	exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Forum - Change password</title>
+	<title>Trader - Change password</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">

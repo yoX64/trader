@@ -1,6 +1,14 @@
 <?php
 include('config.php');
 
+if(!isset($_SESSION['user_id'])) {
+	$_SESSION['login_errors'] = array(
+		'Please log in first'
+	);
+	header("Location: login.php");
+	exit;
+}
+
 $order_id = $_GET['order_id'];
 ?>
 <!DOCTYPE html>

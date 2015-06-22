@@ -1,5 +1,13 @@
 <?php
 include('config.php');
+
+if(!isset($_SESSION['user_id'])) {
+	$_SESSION['login_errors'] = array(
+		'Please log in first'
+	);
+	header("Location: login.php");
+	exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
