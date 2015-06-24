@@ -24,6 +24,17 @@ include('config.php');
 
 	<div class="container">
 		<h1>Cart</h1>
+		<?php
+		if(isset($_SESSION['checkout_errors'])) {
+			foreach($_SESSION['checkout_errors'] as $value) {
+				?>
+				<p class="text-danger"><?php echo $value; ?></p>
+				<?php
+			}
+
+			unset($_SESSION['checkout_errors']);
+		}
+		?>
 
 		<?php
 		if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
@@ -37,7 +48,7 @@ include('config.php');
 				</tr>
 			</thead>
 			<tbody>
-				<form action="post" action="send_cart.php">
+				<form method="post" action="checkout_process.php">
 					<?php
 
 					foreach($_SESSION['cart'] as $product) {
@@ -45,9 +56,9 @@ include('config.php');
 						$product_data = $product->fetch_assoc();
 					?>
 					<tr>
-						<input type="hidden" name="product_id" value="<?php echo $product_data['product_id']; ?>">
+						<input type="hidden" name="product_id[]" value="<?php echo $product_data['product_id']; ?>">
 						<td><?php echo $product_data['name'] ?></td>
-						<td><input type="number" name="quantity" value="1"></td>
+						<td><input type="text" name="quantity[]" value="1"></td>
 						<td>
 							<a href="<?php echo $base_path; ?>/update_cart.php?action=remove&product_id=<?php echo $product_data['product_id']; ?>" class="btn btn-danger">Remove</a>
 						</td>
@@ -57,7 +68,7 @@ include('config.php');
 					?>
 
 					<tr>
-						<td><input type="submit" value="Send order" class="btn btn-success">
+						<td><input type="submit" value="Checkout" class="btn btn-success">
 						</td>
 						<td></td>
 						<td></td>
