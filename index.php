@@ -49,6 +49,33 @@ include('config.php');
 				?>
 			</tbody>
 		</table>
+
+		<h1>Top products</h1>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th width="90%">Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$top_products = $db->query("SELECT * FROM products ORDER BY sold DESC LIMIT 0,5");
+
+				while($row = $top_products->fetch_assoc()) {
+				?>
+				<tr>
+					<td><?php echo $row['name'] ?></td>
+					<td>
+						<a href="<?php echo $base_path; ?>/view_product.php?product_id=<?php echo $row['product_id']; ?>" class="btn btn-primary">View</a>
+					</td>
+				</tr>
+				<?php
+				}
+				?>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

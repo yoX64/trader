@@ -45,11 +45,12 @@ $products = serialize($_SESSION['checkout']['products']);
 $quantity = serialize($_SESSION['checkout']['quantities']);
 
 foreach($_SESSION['checkout']['products'] as $key => $product) {
-	$product_data = $db->query("SELECT stock FROM products WHERE product_id='$product'");
+	$product_data = $db->query("SELECT stock, sold FROM products WHERE product_id='$product'");
 	$product_info = $product_data->fetch_assoc();
 
 	$new_stock = $product_info['stock'] - $_SESSION['checkout']['quantities'][$key];
-	$db->query("UPDATE products SET stock='$new_stock' WHERE product_id='$product'");
+	$new_sold = $product_info['sold'] + $_SESSION['checkout']['quantities'][$key];
+	$db->query("UPDATE products SET stock='$new_stock', sold='$new_sold' WHERE product_id='$product'");
 }
 
 $db->query("INSERT INTO
