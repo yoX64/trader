@@ -7,6 +7,7 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
 $address = $_POST['address'];
+$phone = $_POST['phone'];
 
 $errors = array();
 
@@ -30,6 +31,10 @@ if($address == '') {
 	array_push($errors, "Adress field is required");
 }
 
+if($phone == '') {
+	array_push($errors, "Phone field is required");
+}
+
 if(!empty($errors)) {
 	$_SESSION['form_validation'] = $errors;
 	header("Location: send_order.php");
@@ -48,8 +53,8 @@ foreach($_SESSION['checkout']['products'] as $key => $product) {
 }
 
 $db->query("INSERT INTO
-	orders (user_id, fname, lname, email, products, quantity, address)
-	VALUES ('$user_id', '$fname', '$lname', '$email', '$products', '$quantity', '$address')");
+	orders (user_id, fname, lname, email, phone, products, quantity, address)
+	VALUES ('$user_id', '$fname', '$lname', '$email', '$phone', '$products', '$quantity', '$address')");
 
 unset($_SESSION['cart']);
 unset($_SESSION['checkout']);

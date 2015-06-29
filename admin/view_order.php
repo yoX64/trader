@@ -49,6 +49,11 @@ $order_id = $_GET['order_id'];
 			<?php echo $order_data['email']; ?>
 		</p>
 		<p>
+			<strong>Phone</strong>
+			<br>
+			<?php echo $order_data['phone']; ?>
+		</p>
+		<p>
 			<strong>Address</strong>
 			<br>
 			<?php echo $order_data['address']; ?>

@@ -57,6 +57,7 @@ if(!isset($_SESSION['user_id'])) {
 						'lname'		=> '',
 						'email'		=> '',
 						'address'	=> '',
+						'phone'		=> '',
 					);
 				}
 				?>
@@ -75,6 +76,10 @@ if(!isset($_SESSION['user_id'])) {
 				  <div class="form-group">
 				    <label for="email">Email</label>
 				    <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email" value="<?php echo $row['email'];?>">
+				  </div>
+				  <div class="form-group">
+				    <label for="phone">Phone</label>
+				    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your phone" value="<?php echo $row['phone'];?>">
 				  </div>
 				  <div class="form-group">
 				    <label for="address">Address</label>
