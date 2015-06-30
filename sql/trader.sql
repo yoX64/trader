@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 30, 2015 at 06:29 PM
+-- Generation Time: Jun 30, 2015 at 08:50 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -60,6 +60,30 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`category_id`, `name`, `description`) VALUES
 (1, 'Motherboards', 'This category contains motherboards.'),
 (2, 'CPU', 'This category contains CPUs.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `approved` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`comment_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `product_id`, `author`, `content`, `date_created`, `approved`) VALUES
+(2, 1, 'user_1', 'gsdf', '2015-06-30 16:42:05', 0),
+(3, 1, 'user_1', 'sdgsd', '2015-06-30 17:24:55', 1);
 
 -- --------------------------------------------------------
 

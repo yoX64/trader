@@ -18,6 +18,7 @@
         <li><a href="<?php echo $base_path; ?>/products.php">Products</a></li>
         <li><a href="<?php echo $base_path; ?>/users.php">Users</a></li>
         <li><a href="<?php echo $base_path; ?>/orders.php">Orders</a></li>
+        <li><a href="<?php echo $base_path; ?>/comments.php">Comments</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo $base_path; ?>/logout.php">Log out</a></li>

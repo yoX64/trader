@@ -53,6 +53,51 @@ $product_data = $product->fetch_assoc();
 				<img src="admin/uploads/<?php echo $product_data['image'] ?>" alt="<?php echo $product_data['name']; ?>" class="img-responsive">
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<?php
+				$comments = $db->query("SELECT * FROM comments WHERE product_id='$product_id' AND approved='1' ORDER BY comment_id DESC");
+
+				while($row = $comments->fetch_assoc()) {
+				?>
+				<h6><?php echo $row['author'] ?> says:</h6>
+				<p>
+					<?php echo $row['content']; ?>
+				</p>
+				<hr>
+				<?php
+				}
+				?>
+
+				<?php
+				if(isset($_SESSION['user_id'])) {
+				?>
+				<h5>Add Comment</h5>
+
+				<?php
+				if(isset($_SESSION['comment_process_errors'])) {
+					foreach($_SESSION['comment_process_errors'] as $value) {
+						?>
+						<p class="text-danger"><?php echo $value; ?></p>
+						<?php
+					}
+
+					unset($_SESSION['comment_process_errors']);
+				}
+				?>
+
+				<form method="post" action="add_comment_process.php">
+					<input type="hidden" name="product_id" value="<?php echo $product_data['product_id']; ?>">
+					<div class="form-group">
+						<textarea name="content" class="form-control" rows="3"></textarea>
+					</div>
+					<button type="submit" class="btn btn-default">Add comment</button>
+				</form>
+				<?php
+				}
+				?>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
