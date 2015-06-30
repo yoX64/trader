@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2015 at 08:19 PM
+-- Generation Time: Jun 30, 2015 at 06:29 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '1 - order is not resolved, 0 - order is resolved',
   `canceled` int(11) NOT NULL DEFAULT '0' COMMENT '1 - order is canceled, 0 - order is not canceled',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `orders`
@@ -95,7 +95,9 @@ INSERT INTO `orders` (`order_id`, `user_id`, `fname`, `lname`, `email`, `phone`,
 (8, 1, 'John', 'Doe', 'doe@gmail.com', '23465', 'a:1:{i:0;s:1:"1";}', 'a:1:{i:0;s:1:"1";}', 'Timisoara', '2015-06-29 17:14:56', 1, 0),
 (9, 1, 'John', 'Doe', 'doe@gmail.com', '32645', 'a:2:{i:0;s:1:"4";i:1;s:1:"3";}', 'a:2:{i:0;s:1:"1";i:1;s:1:"2";}', 'Timisoara', '2015-06-29 17:14:58', 1, 0),
 (10, 1, 'John', 'Doe', 'doe@gmail.com', '342645', 'a:1:{i:0;s:1:"3";}', 'a:1:{i:0;s:1:"3";}', 'Timisoara', '2015-06-29 17:14:59', 1, 0),
-(11, 1, 'John', 'Doe', 'doe@gmail.com', '0723 345 283', 'a:1:{i:0;s:1:"3";}', 'a:1:{i:0;s:1:"1";}', 'Timisoara', '2015-06-29 17:15:49', 1, 0);
+(11, 1, 'John', 'Doe', 'doe@gmail.com', '0723 345 283', 'a:1:{i:0;s:1:"3";}', 'a:1:{i:0;s:1:"1";}', 'Timisoara', '2015-06-29 17:15:49', 1, 0),
+(12, 1, 'John', 'Doe', 'doe@gmail.com', '0723 345 283', 'a:1:{i:0;s:1:"4";}', 'a:1:{i:0;s:1:"1";}', 'Timisoara', '2015-06-29 17:36:07', 1, 0),
+(13, 1, 'John', 'Doe', 'doe@gmail.com', '0723 345 283', 'a:1:{i:0;s:1:"2";}', 'a:1:{i:0;s:1:"1";}', 'Timisoara', '2015-06-29 17:36:21', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -111,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `price` int(11) NOT NULL,
   `stock` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `sold` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -118,11 +121,11 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `category_id`, `name`, `description`, `price`, `stock`, `image`) VALUES
-(1, 2, 'Intel Core i5-4440', 'CPU Socket: 1150', 800, 1, 'procesor-intel-core-i5-4440-31ghz-socket-1150-box.jpg'),
-(2, 2, 'AMD FX-6300', 'CPU Socket: AM3+', 500, 2, 'procesor-amd-fx-6300-x6-6-core-socket-am3-.jpg'),
-(3, 1, 'Asus H97M-E', 'CPU Socket: 1150', 400, 4, 'placa-de-baza-asus-h97m-e-socket-1150.jpg'),
-(4, 1, 'Gigabyte 78LMT', 'CPU Socket: AM3+', 200, 4, 'placa-de-baza-gigabyte-78lmt-usb3-socket-am3+.jpg');
+INSERT INTO `products` (`product_id`, `category_id`, `name`, `description`, `price`, `stock`, `image`, `sold`) VALUES
+(1, 2, 'Intel Core i5-4440', 'CPU Socket: 1150', 800, 1, 'procesor-intel-core-i5-4440-31ghz-socket-1150-box.jpg', 0),
+(2, 2, 'AMD FX-6300', 'CPU Socket: AM3+', 500, 1, 'procesor-amd-fx-6300-x6-6-core-socket-am3-.jpg', 1),
+(3, 1, 'Asus H97M-E', 'CPU Socket: 1150', 400, 4, 'placa-de-baza-asus-h97m-e-socket-1150.jpg', 0),
+(4, 1, 'Gigabyte 78LMT', 'CPU Socket: AM3+', 200, 3, 'placa-de-baza-gigabyte-78lmt-usb3-socket-am3+.jpg', 1);
 
 -- --------------------------------------------------------
 
